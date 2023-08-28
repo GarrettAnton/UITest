@@ -1,4 +1,4 @@
-const BaseElement = require("../../BaseElement");
+const BaseElement = require("../../../UITestFramework/BaseObjects/BaseElement");
 const SearchLine = require("./SearchLine");
 
 class Header extends BaseElement {
@@ -7,6 +7,8 @@ class Header extends BaseElement {
     }
 
     SearchLine = new SearchLine(this.GetBy().xpath("//*[@id='srch']"));
+
+    Logo = new BaseElement(this.GetBy().xpath("//*[@id='logo']"));
 }
 
 module.exports = Header;

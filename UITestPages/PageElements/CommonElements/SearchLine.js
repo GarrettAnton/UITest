@@ -1,4 +1,4 @@
-const BaseElement = require("../../BaseElement");
+const BaseElement = require("../../../UITestFramework/BaseObjects/BaseElement");
 
 class SearchLine extends BaseElement {
     constructor(ByValue) {
