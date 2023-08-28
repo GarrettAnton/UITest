@@ -1,20 +1,21 @@
 const { WebDriver, Builder } = require("selenium-webdriver");
 
 class InnerWebDriver extends WebDriver {
-    #driver;
+    driver;
     #defaultURL;
     constructor(capabilities, URL) {
         super();
-        this.#driver = new Builder().withCapabilities(capabilities).build();
+        this.driver = new Builder().withCapabilities(capabilities).build();
         this.#defaultURL = URL;
     }
 
     async Get() {
-        await this.#driver.get(this.#defaultURL);
+        await this.driver.get(this.#defaultURL);
+        this.driver.findElement;
     }
 
     async Quit() {
-        await this.#driver.quit();
+        await this.driver.quit();
     }
 }
 
