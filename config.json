@@ -1,4 +1,5 @@
 {
     "BROWSER": "chrome",
-    "URL": "https://elmir.ua/"
+    "URL": "https://elmir.ua/",
+    "PLATFORM": "WIN10"
 }
