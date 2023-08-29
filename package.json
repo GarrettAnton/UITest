@@ -1,5 +1,10 @@
 {
-  "dependencies": {
-    "selenium-webdriver": "^4.11.1"
-  }
+    "dependencies": {
+        "mocha": "^10.2.0",
+        "selenium-webdriver": "^4.11.1",
+        "winston": "^3.10.0"
+    },
+    "scripts": {
+        "test": "node ./node_modules/mocha/bin/mocha ./UITestsRepository/FirstTest --timeout 120000"
+    }
 }
