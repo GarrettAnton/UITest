@@ -1,5 +1,8 @@
 {
     "BROWSER": "chrome",
     "URL": "https://elmir.ua/",
-    "PLATFORM": "WIN10"
+    "PLATFORM": "WIN10",
+    "IMPLICITY_WAIT": 120000,
+    "EXPLICITY_WAIT": 60000,
+    "PAGE_LOAD_TIMEOUT": 60000
 }

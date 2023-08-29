@@ -1,7 +1,7 @@
 const webDriver = require("selenium-webdriver");
 
 class BaseObject {
-    GetBy() {
+    getBy() {
         return webDriver.By;
     }
 }

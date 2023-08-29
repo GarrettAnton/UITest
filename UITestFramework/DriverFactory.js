@@ -4,11 +4,20 @@ const InnerWebDriver = require("./InnerWebDriver");
 const capabilities = {
     platform: Config.PLATFORM,
     browserName: Config.BROWSER,
+    timeouts: {
+        implicit: Config.IMPLICITY_WAIT,
+        pageLoad: Config.PAGE_LOAD_TIMEOUT,
+    },
 };
 
 class DriverFactory {
-    GetDriver() {
-        return new InnerWebDriver(capabilities, Config.URL);
+    getDriver() {
+        let driver = new InnerWebDriver(
+            capabilities,
+            Config.URL,
+            Config.EXPLICITY_WAIT
+        );
+        return driver;
     }
 }
 

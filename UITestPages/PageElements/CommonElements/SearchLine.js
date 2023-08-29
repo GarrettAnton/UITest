@@ -1,12 +1,13 @@
 const BaseElement = require("../../../UITestFramework/BaseObjects/BaseElement");
 
 class SearchLine extends BaseElement {
-    constructor(ByValue) {
-        super(ByValue);
+    constructor(byValue) {
+        super(byValue);
     }
 
-    Line = new BaseElement(this.GetBy().xpath("//*[@id='q']"));
-    Submit = new BaseElement(this.GetBy().xpath("//*[@type='submit']"));
+    line = new BaseElement(this.getBy().xpath("//*[@id='q']"));
+
+    submit = new BaseElement(this.getBy().xpath("//*[@id='find']"));
 }
 
 module.exports = SearchLine;

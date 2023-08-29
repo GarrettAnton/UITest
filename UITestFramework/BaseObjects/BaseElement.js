@@ -1,9 +1,9 @@
 const BaseObject = require("./BaseObject");
 
 class BaseElement extends BaseObject {
-    constructor(ByValue) {
+    constructor(byValue) {
         super();
-        this.ByValue = ByValue;
+        this.byValue = byValue;
     }
 }
 

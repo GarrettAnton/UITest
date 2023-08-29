@@ -2,13 +2,13 @@ const BaseElement = require("../../../UITestFramework/BaseObjects/BaseElement");
 const SearchLine = require("./SearchLine");
 
 class Header extends BaseElement {
-    constructor(ByValue) {
-        super(ByValue);
+    constructor(byValue) {
+        super(byValue);
     }
 
-    SearchLine = new SearchLine(this.GetBy().xpath("//*[@id='srch']"));
+    searchLine = new SearchLine(this.getBy().xpath("//*[@id='srch']"));
 
-    Logo = new BaseElement(this.GetBy().xpath("//*[@id='logo']"));
+    logo = new BaseElement(this.getBy().xpath("//*[@id='logo']"));
 }
 
 module.exports = Header;

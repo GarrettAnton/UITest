@@ -1,4 +1,3 @@
-const { WebElement } = require("selenium-webdriver");
 const BasePage = require("./BaseObjects/BasePage");
 const BaseElement = require("./BaseObjects/BaseElement");
 
@@ -7,7 +6,7 @@ class PageFactory {
         this.driver = driver;
     }
 
-    async GetPage(Page) {
+    async getPage(Page) {
         let NewPage;
         if (Page instanceof BasePage) {
             let props = Object.getOwnPropertyNames(Page).filter(
@@ -18,7 +17,7 @@ class PageFactory {
             }
             NewPage = {};
             for (let i = 0; i < props.length; i++) {
-                NewPage[props[i]] = await this.GetElements(Page[props[i]]);
+                NewPage[props[i]] = await this.getElements(Page[props[i]]);
             }
         } else {
             throw `The page ${Page} is not a BasePage object`;
@@ -26,10 +25,14 @@ class PageFactory {
         return NewPage;
     }
 
-    async GetElements(prop) {
+    async getElements(prop, parent) {
         let newElement;
         try {
-            newElement = await this.driver.findElement(prop.ByValue);
+            if (parent) {
+                newElement = await parent.findElement(prop.byValue);
+            } else {
+                newElement = await this.driver.findElement(prop.byValue);
+            }
         } catch (err) {
             console.log(err.message);
         }
@@ -39,8 +42,9 @@ class PageFactory {
         if (subProps.length != 0) {
             for (let i = 0; i < subProps.length; i++) {
                 try {
-                    newElement[subProps[i]] = await this.GetElements(
-                        prop[subProps[i]]
+                    newElement[subProps[i]] = await this.getElements(
+                        prop[subProps[i]],
+                        newElement
                     );
                 } catch (err) {
                     console.log(err.message);
