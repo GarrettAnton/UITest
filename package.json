@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "chai": "^4.3.8",
         "mocha": "^10.2.0",
         "selenium-webdriver": "^4.11.1",
         "winston": "^3.10.0"
