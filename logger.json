@@ -1,0 +1,5 @@
+{
+    "APP_LOG_NAME": "app_log.js",
+    "ERROR_LOG_NAME": "errors.js",
+    "FOLDER": "logs"
+}
