@@ -25,7 +25,14 @@ class PageFactory extends BaseTestFrameworkClass {
             }
             NewPage = {};
             for (let i = 0; i < props.length; i++) {
-                NewPage[props[i]] = await this.getElements(Page[props[i]]);
+                let newElement = await this.getElements(Page[props[i]]);
+                if (newElement) {
+                    NewPage[props[i]] = newElement;
+                } else {
+                    await this.logger.warn(
+                        `The the element ${props[i]} for the page ${Page.constructor.name} was not found`
+                    );
+                }
             }
         } else {
             await this.logger.error(
@@ -38,7 +45,7 @@ class PageFactory extends BaseTestFrameworkClass {
 
     async getElements(prop, parent) {
         await this.logger.info(
-            `Method getElements starts working with element ${prop.constructor.name}}`
+            `Method getElements starts working with element ${prop.constructor.name}`
         );
         let newElement;
         try {
@@ -48,10 +55,10 @@ class PageFactory extends BaseTestFrameworkClass {
                 newElement = await this.driver.findElement(prop.byValue);
             }
         } catch (err) {
-            await this.logger.error(
-                `The error occurred while element ${prop.constructor.name} made`
+            await this.logger.warn(
+                `The element ${prop.constructor.name} was not made.`
             );
-            throw `The error occurred while element ${prop.constructor.name} made`;
+            return null;
         }
         let subProps = Object.getOwnPropertyNames(prop).filter(
             (p) => prop[p] instanceof BaseElement
@@ -63,10 +70,13 @@ class PageFactory extends BaseTestFrameworkClass {
                         prop[subProps[i]].constructor.name
                     } which has parent ${prop.constructor.name}`
                 );
-                newElement[subProps[i]] = await this.getElements(
+                let newSubElement = await this.getElements(
                     prop[subProps[i]],
                     newElement
                 );
+                if (newSubElement) {
+                    newElement[subProps[i]] = newSubElement;
+                }
             }
         }
         return newElement;

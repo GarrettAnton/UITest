@@ -2,22 +2,22 @@ const { WebDriver, Builder } = require("selenium-webdriver");
 
 class InnerWebDriver extends WebDriver {
     driver;
+    defaultURL;
     #logger;
-    #defaultURL;
     #defaultExplicityWait;
     constructor(capabilities, URL, explicityWait = 60, logger) {
         super();
         this.driver = new Builder().withCapabilities(capabilities).build();
-        this.#defaultURL = URL;
+        this.defaultURL = URL;
         this.#defaultExplicityWait = explicityWait;
         this.#logger = logger;
     }
 
     async get() {
         await this.#logger.info(
-            `Method get tries to get to the URL ${this.#defaultURL}`
+            `Method get tries to get to the URL ${this.defaultURL}`
         );
-        await this.driver.get(this.#defaultURL);
+        await this.driver.get(this.defaultURL);
     }
 
     async wait(condition, timeout = this.#defaultExplicityWait, message) {
