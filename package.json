@@ -6,6 +6,6 @@
         "winston": "^3.10.0"
     },
     "scripts": {
-        "test": "node ./node_modules/mocha/bin/mocha ./UITestsRepository/FirstTest --timeout 120000"
+        "test": "node ./node_modules/mocha/bin/mocha ./UITestsRepository/* --timeout 120000"
     }
 }
